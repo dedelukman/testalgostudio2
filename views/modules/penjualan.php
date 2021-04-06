@@ -34,8 +34,7 @@
         <tr>
           
           <th style="width:10px">#</th>
-          <th>No</th>
-          <th>Nama Customer</th>
+           <th>Nama Customer</th>
           <th>Alamat </th>
           <th>Tanggal Penjualan</th>             
           <th>Total Penjualan</th>
@@ -45,6 +44,20 @@
         </tr> 
 
        </thead>
+
+       <?php
+          $answer = PenjualanController::ctrShowPenjualan();
+          foreach ($answer as $key => $value) {           
+            echo '<td>'.($key+1).'</td>
+              <td>'.$value["nama_konsumen"].'</td>
+              <td>'.$value["alamat"].'</td>
+              <td>'.$value["tanggal_penjualan"].'</td>
+              <td>Rp '.$value["total"].'</td>
+              <td>'.$value["detail"].'</td>
+            </tr>';
+           }
+
+                                ?>
        
 
      </table>

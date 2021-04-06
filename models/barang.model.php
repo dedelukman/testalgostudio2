@@ -6,7 +6,7 @@ require_once 'connection.php';
 
 class BarangModel{
 	/*=============================================
-	TAMPILAN PENJUALAN BAR CHART
+	TAMPILAN PENJUALAN PIE CHART
 	=============================================*/
 
 	static public function mdlShowBarangKategori(){

@@ -6,7 +6,7 @@
 class BarangController{
 
 	/*=============================================
-	TAMPILAN PENJUALAN BAR CHART
+	TAMPILAN PENJUALAN PIE CHART
 	=============================================*/
 
 	static public function ctrShowBarangKategori(){
