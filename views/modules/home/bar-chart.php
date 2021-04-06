@@ -100,6 +100,7 @@ $noRepeatDates = array_unique($arrayDates);
 
   var $salesChart = $('#bar-chart2')
   var salesChart  = new Chart($salesChart, {
+    
     type   : 'bar',
     data   : {
         labels  : [
@@ -191,12 +192,13 @@ $noRepeatDates = array_unique($arrayDates);
         }
       ]
     },
+    
     options: {
       maintainAspectRatio: false,
       tooltips           : {
         mode     : mode,
         intersect: intersect,
-        displayColors: false,
+        displayColors: true,
         
       },
       hover              : {
@@ -204,7 +206,7 @@ $noRepeatDates = array_unique($arrayDates);
         intersect: intersect
       },
       legend             : {
-        display: false
+        display: true
       },
       scales             : {
         yAxes: [{
