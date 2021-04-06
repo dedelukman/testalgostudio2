@@ -35,5 +35,10 @@ Teknologi yang digunakan:
 Contoh mockup halaman dashboard
 ![image](https://user-images.githubusercontent.com/7625042/113720299-b238ac80-9718-11eb-9557-74f61b5c7655.png)
 
+HASIL
+
+
+https://user-images.githubusercontent.com/7625042/113722200-6850c600-971a-11eb-97a0-2e886c58066f.mp4
+
 
 
