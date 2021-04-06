@@ -5,11 +5,13 @@ $answer = PenjualanController::ctrShowPenjualan();
 $arrayDates = array();
 $arraySales = array();
 $addingMonthPayments = array();
+$addingMonthPayment = array();
 
 foreach ($answer as $key => $value) {
 
-    #We capture only year and month
-	$singleDate = substr($value["tanggal_penjualan"],0,10);
+    #We capture date
+	$singleDate = $value["tanggal_penjualan"];
+  
 
     #Introduce dates in arrayDates
 	array_push($arrayDates, $singleDate);
@@ -23,17 +25,28 @@ foreach ($answer as $key => $value) {
 		$addingMonthPayments[$key] += $value;
 	}
 
-  $arrayHandphone = array($singleDate => $value["handphone"]);
-
-    #we add payments made in the same month
-	foreach ($arrayHandphone as $key => $value) {
-		
-		$addingMonthPayments1[$key] += $value;
-	}
-
+  
 }
 
+foreach ($answer as $keys => $values) {
 
+  #We capture date
+$singleDates = $values["tanggal_penjualan"];
+
+  #Introduce dates in arrayDates
+array_push($arrayDates, $singleDates);
+
+
+$arrayHandphone = array($singleDates => $values["handphone"]);
+
+
+  #we add payments made in the same month
+foreach ($arrayHandphone as $keys => $values) {
+  
+  $addingMonthPayment[$keys] += $values;
+}
+
+}
 
 
 $noRepeatDates = array_unique($arrayDates);
@@ -44,7 +57,7 @@ $noRepeatDates = array_unique($arrayDates);
   
   <div class="card-header ">
     
-      <h3 class="card-title">Customers</h3>    
+      <h3 class="card-title">Penjualan</h3>    
       <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
                   </button>
@@ -113,8 +126,14 @@ $noRepeatDates = array_unique($arrayDates);
         ],
       datasets: [
         {
-          backgroundColor: '#007bff',
-          borderColor    : '#007bff',
+          label:'Komputer',
+          backgroundColor     : 'rgba(60,141,188,0.9)',
+          borderColor         : 'rgba(60,141,188,0.8)',
+          pointRadius          : false,
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
           data           : [
             <?php
 
@@ -139,8 +158,14 @@ $noRepeatDates = array_unique($arrayDates);
           ]
         },
         {
-          backgroundColor: '#ced4da',
-          borderColor    : '#ced4da',
+          label:'Handphone',
+          backgroundColor     : 'rgba(210, 214, 222, 1)',
+          borderColor         : 'rgba(210, 214, 222, 1)',
+          pointRadius         : false,
+          pointColor          : 'rgba(210, 214, 222, 1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
           data           : [
             <?php
 
@@ -148,12 +173,12 @@ $noRepeatDates = array_unique($arrayDates);
 
                     foreach($noRepeatDates as $key){
 
-                    echo "".$addingMonthPayments1[$key]." ,";
+                    echo "".$addingMonthPayment[$key]." ,";
 
 
                     }
 
-                    echo "".$addingMonthPayments1[$key]." ";
+                    echo "".$addingMonthPayment[$key]." ";
 
                 }else{
 
@@ -170,7 +195,9 @@ $noRepeatDates = array_unique($arrayDates);
       maintainAspectRatio: false,
       tooltips           : {
         mode     : mode,
-        intersect: intersect
+        intersect: intersect,
+        displayColors: false,
+        
       },
       hover              : {
         mode     : mode,
@@ -193,11 +220,11 @@ $noRepeatDates = array_unique($arrayDates);
 
             // Include a dollar sign in the ticks
             callback: function (value, index, values) {
-              if (value >= 1000) {
-                value /= 1000
-                value += 'k'
-              }
-              return '$' + value
+               value = value.toString();
+                value = value.split(/(?=(?:...)*$)/);
+                // Convert the array to a string and format the output
+                value = value.join('.');
+                return 'Rp ' + value;
             }
           }, ticksStyle)
         }],
