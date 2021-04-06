@@ -3,17 +3,16 @@
 
 
 
-class PenjualanController{
+class BarangController{
 
 	/*=============================================
 	TAMPILAN PENJUALAN BAR CHART
 	=============================================*/
 
-	static public function ctrShowPenjualanBarChart(){
-
+	static public function ctrShowBarangKategori(){
 		
 
-		$answer = PenjualanModel::mdlShowPenjualanBarChart();
+		$answer = BarangModel::mdlShowBarangKategori();
 
 		return $answer;
 

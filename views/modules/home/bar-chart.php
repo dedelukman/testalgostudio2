@@ -1,6 +1,6 @@
 <?php
 
-$answer = PenjualanController::ctrShowPenjualan();
+$answer = PenjualanController::ctrShowPenjualanBarChart();
 
 $arrayDates = array();
 $arraySales = array();
